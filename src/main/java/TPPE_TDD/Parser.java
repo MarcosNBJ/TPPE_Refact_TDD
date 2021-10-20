@@ -40,11 +40,11 @@ public class Parser {
     }
 
     public void setDelimitador(Character delimitador) {
-        
+        this.delimitador = delimitador;
     }
     
     public Character getDelimitador(){
-        return ';';
+        return this.delimitador;
     } 
    
     
