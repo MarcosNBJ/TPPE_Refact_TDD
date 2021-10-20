@@ -26,14 +26,14 @@ public class Parser {
         this.arquivoSaida = arquivoSaida;
     }
 
-    List<String> readInput() {
+    List<String> readInput() throws ArquivoNaoEncontradoException {
         
         List<String> content = new ArrayList<>();
         
         try {
             content = Files.readAllLines(Paths.get(this.arquivoEntrada), StandardCharsets.UTF_8);
-        } catch (IOException ex) {
-            
+        } catch (Exception e) {
+           throw new ArquivoNaoEncontradoException();
         }
         return content;
     }
