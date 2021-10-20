@@ -21,6 +21,7 @@ public class Parser {
    private String arquivoEntrada;
    private String arquivoSaida;
    private Character delimitador;
+   private Integer max;
 
     public Parser(String arquivoEntrada, String arquivoSaida) {
         this.arquivoEntrada = arquivoEntrada;
@@ -51,6 +52,8 @@ public class Parser {
     public Character getDelimitador(){
         return this.delimitador;
     } 
+    
+
    
     
 }
