@@ -19,6 +19,10 @@ public class Parser {
         this.arquivoSaida = arquivoSaida;
     }
 
+    String readInput() {
+        return "test file contents";
+    }
+
    
     
     

@@ -23,6 +23,7 @@ public class ParserTest {
     public void testLeArquivo() {
         Parser parser = new Parser("testFixture.txt","results.txt");
         String fileContents = parser.readInput();
+        assertEquals(fileContents, "test file contents");
     }
     
 }
