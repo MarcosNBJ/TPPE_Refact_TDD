@@ -5,6 +5,13 @@
  */
 package TPPE_TDD;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author marcos
@@ -19,8 +26,16 @@ public class Parser {
         this.arquivoSaida = arquivoSaida;
     }
 
-    String readInput() {
-        return "test file contents";
+    List<String> readInput() {
+        
+        List<String> content = new ArrayList<>();
+        
+        try {
+            content = Files.readAllLines(Paths.get(this.arquivoEntrada), StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            
+        }
+        return content;
     }
 
    

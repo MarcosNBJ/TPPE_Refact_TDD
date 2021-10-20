@@ -5,6 +5,7 @@
  */
 package TPPE_TDD;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,16 +23,11 @@ public class ParserTest {
     @Test
     public void testLeArquivo() {
         Parser parser = new Parser("src/test/fixtures/testFixture.txt","results.txt");
-        String fileContents = parser.readInput();
-        assertEquals(fileContents, "test file contents");
+        List<String> fileContents = parser.readInput();
+        assertEquals(fileContents.get(0), "test file contents");
     }
     
-    @Test
-    public void testLeArquivoDois() {
-        Parser parser = new Parser("src/test/fixtures/testFixtureDois.txt","results.txt");
-        String fileContents = parser.readInput();
-        assertEquals(fileContents, "second test file contents");
-    }
-    
+ 
+ 
     
 }
