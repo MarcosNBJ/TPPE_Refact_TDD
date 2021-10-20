@@ -98,6 +98,31 @@ public class Parser {
         return result;
     
     }
+    
+    public String getParsedResultColumns() throws ArquivoNaoEncontradoException{
+    
+        String result = "";
+        ArrayList<ArrayList<Double>> matriz = matrizDeValores();
+        
+        for(int i =1;i<=matriz.size();i++){
+           result+= i+";";
+        }
+        
+        result+="\n";
+        
+        for(int j=0; j<max;j++){
+          for(int i =0;i<matriz.size();i++){
+             if(matriz.get(i).size()>j)
+                result+= matriz.get(i).get(j)+this.delimitador;
+             else
+                 result+="\t";
+          }  
+          result+="\n";
+        }
+        
+        return result;
+    
+    }
 
    
 }
