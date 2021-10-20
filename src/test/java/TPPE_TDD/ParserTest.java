@@ -21,9 +21,17 @@ public class ParserTest {
 
     @Test
     public void testLeArquivo() {
-        Parser parser = new Parser("testFixture.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixture.txt","results.txt");
         String fileContents = parser.readInput();
         assertEquals(fileContents, "test file contents");
     }
+    
+    @Test
+    public void testLeArquivoDois() {
+        Parser parser = new Parser("src/test/fixtures/testFixtureDois.txt","results.txt");
+        String fileContents = parser.readInput();
+        assertEquals(fileContents, "second test file contents");
+    }
+    
     
 }
