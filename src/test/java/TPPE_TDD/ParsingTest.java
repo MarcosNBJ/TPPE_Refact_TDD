@@ -32,4 +32,11 @@ public class ParsingTest {
         parser.setDelimitador(";");
         assertEquals(parser.getParsedResultLines(), "1;1000.0;782.0;\n2;523.0;861.0;\n");
     }
+    
+    @Test
+    public void testParseColunas() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        parser.setDelimitador(";");
+        assertEquals(parser.getParsedResultColumns(), "1;2;3;\n456.0;523.0\n782.0;861.0;\n");
+    }
 }
