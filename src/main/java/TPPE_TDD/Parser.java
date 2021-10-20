@@ -20,13 +20,14 @@ public class Parser {
 
    private String arquivoEntrada;
    private String arquivoSaida;
+   private Character delimitador;
 
     public Parser(String arquivoEntrada, String arquivoSaida) {
         this.arquivoEntrada = arquivoEntrada;
         this.arquivoSaida = arquivoSaida;
     }
 
-    List<String> readInput() throws ArquivoNaoEncontradoException {
+    public List<String> readInput() throws ArquivoNaoEncontradoException {
         
         List<String> content = new ArrayList<>();
         
@@ -38,7 +39,18 @@ public class Parser {
         return content;
     }
 
-   
+    public void setDelimitador(String delimitador) throws DelimitadorInvalidoException {
+       
+        if(1==delimitador.length()){
+            this.delimitador = delimitador.charAt(0);
+        }else{
+            throw new DelimitadorInvalidoException();
+        }
+    }
     
+    public Character getDelimitador(){
+        return this.delimitador;
+    } 
+   
     
 }
