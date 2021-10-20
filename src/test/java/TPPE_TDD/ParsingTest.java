@@ -26,4 +26,10 @@ public class ParsingTest {
         parser.setDelimitador("-");
         assertEquals(parser.getParsedResultLines(), "1-456.0-782.0-\n2-523.0-861.0-\n");
     }
+    @Test
+    public void testParseLinhasTres() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt","results.txt");
+        parser.setDelimitador(";");
+        assertEquals(parser.getParsedResultLines(), "1;1000.0;782.0;\n2;523.0;861.0;\n");
+    }
 }
