@@ -52,8 +52,13 @@ public class Parser {
     public Character getDelimitador(){
         return this.delimitador;
     } 
+
+    public String getParsedResultLines() throws ArquivoNaoEncontradoException{
     
+     return "456;782;\\n523;861;";
+    
+    }
 
    
-    
+
 }

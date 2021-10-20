@@ -18,6 +18,6 @@ public class ParsingTest {
     public void testParseLinhas() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
         Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
         parser.setDelimitador(";");
-        assertEquals(parser.getParsedResultLines() "456;782;\\n523;861;");
+        assertEquals(parser.getParsedResultLines(), "456;782;\\n523;861;");
     }
 }
