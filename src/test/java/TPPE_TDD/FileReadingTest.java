@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  *
  * @author marcos
  */
-public class ParserTest {
+public class FileReadingTest {
     
 
     @Test
