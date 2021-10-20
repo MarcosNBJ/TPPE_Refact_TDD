@@ -21,4 +21,12 @@ public class DelimitadorTest {
         parser.setDelimitador(';');
         assertEquals(parser.getDelimitador(), (Character)';');
     }
+    
+    @Test
+    public void testDelimitadorDois() {
+        Parser parser = new Parser("src/test/fixtures/testFixture.txt","results.txt");
+        parser.setDelimitador('\t');
+        assertEquals(parser.getDelimitador(), (Character)'\t');
+    }    
+    
 }
