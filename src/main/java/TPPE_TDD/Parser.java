@@ -39,8 +39,13 @@ public class Parser {
         return content;
     }
 
-    public void setDelimitador(Character delimitador) {
-        this.delimitador = delimitador;
+    public void setDelimitador(String delimitador) throws DelimitadorInvalidoException {
+       
+        if(1==delimitador.length()){
+            this.delimitador = delimitador.charAt(0);
+        }else{
+            throw new DelimitadorInvalidoException();
+        }
     }
     
     public Character getDelimitador(){
