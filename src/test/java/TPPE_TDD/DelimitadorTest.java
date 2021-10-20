@@ -29,4 +29,11 @@ public class DelimitadorTest {
         assertEquals(parser.getDelimitador(), (Character)'\t');
     }    
     
+    @Test
+    public void testDelimitadorTres() {
+        Parser parser = new Parser("src/test/fixtures/testFixture.txt","results.txt");
+        parser.setDelimitador('-');
+        assertEquals(parser.getDelimitador(), (Character)'-');
+    }    
+    
 }
