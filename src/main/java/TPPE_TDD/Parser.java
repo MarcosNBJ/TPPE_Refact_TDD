@@ -105,7 +105,7 @@ public class Parser {
         ArrayList<ArrayList<Double>> matriz = matrizDeValores();
         
         for(int i =1;i<=matriz.size();i++){
-           result+= i+";";
+           result+= i+this.delimitador;
         }
         
         result+="\n";
