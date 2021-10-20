@@ -38,7 +38,14 @@ public class Parser {
         }
         return content;
     }
-   
+
+    public void setDelimitador(Character delimitador) {
+        
+    }
     
+    public Character getDelimitador(){
+        return ';';
+    } 
+   
     
 }
