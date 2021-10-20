@@ -20,7 +20,7 @@ public class Parser {
 
    private String arquivoEntrada;
    private String arquivoSaida;
-   private Character delimitador;
+   private String delimitador;
    private Integer max;
 
     public Parser(String arquivoEntrada, String arquivoSaida) {
@@ -43,22 +43,61 @@ public class Parser {
     public void setDelimitador(String delimitador) throws DelimitadorInvalidoException {
        
         if(1==delimitador.length()){
-            this.delimitador = delimitador.charAt(0);
+            this.delimitador = delimitador;
         }else{
             throw new DelimitadorInvalidoException();
         }
     }
     
-    public Character getDelimitador(){
+    public String getDelimitador(){
         return this.delimitador;
     } 
 
+    private ArrayList<ArrayList<Double>> matrizDeValores() throws ArquivoNaoEncontradoException{
+        ArrayList<ArrayList<Double>> matriz = new ArrayList<>();
+        ArrayList<Double> temp= new ArrayList<>();
+        Integer current = 0;
+        this.max=0;
+    
+        for(String line : readInput()){
+                            
+            if(line.startsWith("-")){
+                if(current>0){
+                    if(current>this.max)this.max=current;
+                    current=0;
+                    matriz.add(temp);
+                    temp = new ArrayList<>();              
+                }
+                continue;
+            }
+            temp.add(Double.parseDouble(line));
+            current++;
+        }
+            
+            
+        if(current>this.max)this.max=current;
+        matriz.add(temp);
+        
+        return matriz;
+    }
+    
     public String getParsedResultLines() throws ArquivoNaoEncontradoException{
     
-     return "456;782;\n523;861;";
+        String result = "";
+        
+        int evolution = 1 ;
+        for(ArrayList<Double> item: matrizDeValores()){
+            result+= evolution+ this.delimitador;
+            for(Double number: item){
+               result+= number+ this.delimitador;
+            }
+            result+= "\n";
+            evolution++;
+        }
+      
+        return result;
     
     }
 
    
-
 }

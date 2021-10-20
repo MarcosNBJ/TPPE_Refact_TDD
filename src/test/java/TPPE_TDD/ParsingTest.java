@@ -18,12 +18,12 @@ public class ParsingTest {
     public void testParseLinhas() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
         Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
         parser.setDelimitador(";");
-        assertEquals(parser.getParsedResultLines(), "456;782;\n523;861;");
+        assertEquals(parser.getParsedResultLines(), "1;456.0;782.0;\n2;523.0;861.0;\n");
     }
     @Test
     public void testParseLinhasDois() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
         parser.setDelimitador("-");
-        assertEquals(parser.getParsedResultLines(), "456-782-\n523-861;");
+        assertEquals(parser.getParsedResultLines(), "1-456.0-782.0-\n2-523.0-861.0-\n");
     }
 }
