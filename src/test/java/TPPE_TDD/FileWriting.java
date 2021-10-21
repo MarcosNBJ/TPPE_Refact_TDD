@@ -17,28 +17,28 @@ import org.junit.Test;
 public class FileWriting {
     @Test
     public void testWriteResults() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(";");
-        parser.writeResults(1);
-        File file = new File("results.txt");
+        parser.writeResults(1,"results");
+        File file = new File("results/analysisMemoryTab.out");
         assertTrue(file.exists());
     }
 
     @Test
     public void testWriteResultsDOis() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","other_result.txt");
+        Parser parser = new Parser("analysisTime.out");
         parser.setDelimitador(";");
-        parser.writeResults(1);
-        File file = new File("other_result.txt");
+        parser.writeResults(1,"results");
+        File file = new File("results/analysisTimeTab.out");
         assertTrue(file.exists());
     }
     
     @Test
     public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","third_result.txt");
+        Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(",");
-        parser.writeResults(0);
-        File file = new File("third_result.txt");
+        parser.writeResults(0,"results");
+        File file = new File("results/analysisMemoryTab.out");
         assertTrue(file.exists());
     }
 }

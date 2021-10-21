@@ -24,13 +24,11 @@ import java.util.logging.Logger;
 public class Parser {
 
    private String arquivoEntrada;
-   private String arquivoSaida;
    private String delimitador;
    private Integer max;
 
-    public Parser(String arquivoEntrada, String arquivoSaida) {
+    public Parser(String arquivoEntrada) {
         this.arquivoEntrada = arquivoEntrada;
-        this.arquivoSaida = arquivoSaida;
     }
 
     public List<String> readInput() throws ArquivoNaoEncontradoException {
@@ -129,11 +127,14 @@ public class Parser {
     
     }
 
-    public void writeResults(int mode) throws ArquivoNaoEncontradoException{
+    public void writeResults(int mode, String caminhoSaida) throws ArquivoNaoEncontradoException{
         
         String result = 1==mode?getParsedResultLines():getParsedResultColumns();
+        String arquivoSaida = caminhoSaida+"/";
+        arquivoSaida += "analysisTime.out".equals(this.arquivoEntrada) ? "analysisTimeTab.out" : "analysisMemoryTab.out";
+
         
-        try (PrintWriter out = new PrintWriter(this.arquivoSaida)) {
+        try (PrintWriter out = new PrintWriter(arquivoSaida)) {
             out.println(result);
         } catch (FileNotFoundException ex) {
                 
