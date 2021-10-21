@@ -5,6 +5,7 @@
  */
 package TPPE_TDD;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -124,6 +127,15 @@ public class Parser {
         
         return result;
     
+    }
+
+    void writeResults(int i)  {
+        File myObj = new File("results.txt");
+       try {
+           myObj.createNewFile();
+       } catch (IOException ex) {
+           Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
     
 
