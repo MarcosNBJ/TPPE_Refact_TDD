@@ -129,13 +129,16 @@ public class Parser {
     
     }
 
-    void writeResults(int i)  {
-        File myObj = new File("results.txt");
-       try {
-           myObj.createNewFile();
-       } catch (IOException ex) {
-           Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
-       }
+    public void writeResults(int mode) throws ArquivoNaoEncontradoException{
+        
+        String result = 1==mode?getParsedResultLines():getParsedResultColumns();
+        
+        try (PrintWriter out = new PrintWriter(this.arquivoSaida)) {
+            out.println(result);
+        } catch (FileNotFoundException ex) {
+                
+        }
+    
     }
     
 
