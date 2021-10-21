@@ -127,7 +127,7 @@ public class Parser {
     
     }
 
-    public void writeResults(int mode, String caminhoSaida) throws ArquivoNaoEncontradoException{
+    public void writeResults(int mode, String caminhoSaida) throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
         
         String result = 1==mode?getParsedResultLines():getParsedResultColumns();
         String arquivoSaida = caminhoSaida+"/";
@@ -136,8 +136,8 @@ public class Parser {
         
         try (PrintWriter out = new PrintWriter(arquivoSaida)) {
             out.println(result);
-        } catch (FileNotFoundException ex) {
-                
+        } catch (Exception ex) {
+           throw new EscritaNaoPermitidaException();
         }
     
     }

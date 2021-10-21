@@ -16,7 +16,7 @@ import org.junit.Test;
  */
 public class FileWriting {
     @Test
-    public void testWriteResults() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+    public void testWriteResults() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(";");
         parser.writeResults(1,"results");
@@ -25,7 +25,7 @@ public class FileWriting {
     }
 
     @Test
-    public void testWriteResultsDOis() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+    public void testWriteResultsDOis() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisTime.out");
         parser.setDelimitador(";");
         parser.writeResults(1,"results");
@@ -34,7 +34,7 @@ public class FileWriting {
     }
     
     @Test
-    public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+    public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(",");
         parser.writeResults(0,"results");
