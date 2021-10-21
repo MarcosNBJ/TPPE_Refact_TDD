@@ -32,4 +32,13 @@ public class FileWriting {
         File file = new File("other_result.txt");
         assertTrue(file.exists());
     }
+    
+    @Test
+    public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","third_result.txt");
+        parser.setDelimitador(",");
+        parser.writeResults(0);
+        File file = new File("third_result.txt");
+        assertTrue(file.exists());
+    }
 }
