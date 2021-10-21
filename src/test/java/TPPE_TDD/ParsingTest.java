@@ -16,39 +16,39 @@ import org.junit.Test;
 public class ParsingTest {
     @Test
     public void testParseLinhas() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt");
         parser.setDelimitador(";");
         assertEquals(parser.getParsedResultLines(), "1;456.0;782.0;\n2;523.0;861.0;\n");
     }
     @Test
     public void testParseLinhasDois() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt");
         parser.setDelimitador("-");
         assertEquals(parser.getParsedResultLines(), "1-456.0-782.0-\n2-523.0-861.0-\n");
     }
     @Test
     public void testParseLinhasTres() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt");
         parser.setDelimitador(";");
         assertEquals(parser.getParsedResultLines(), "1;1000.0;782.0;\n2;523.0;861.0;\n");
     }
     
     @Test
     public void testParseColunas() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt");
         parser.setDelimitador(";");
         assertEquals(parser.getParsedResultColumns(), "1;2;\n456.0;523.0;\n782.0;861.0;\n");
     }
     
     @Test
     public void testParseColunasDois() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsing.txt");
         parser.setDelimitador("-");
         assertEquals(parser.getParsedResultColumns(), "1-2-\n456.0-523.0-\n782.0-861.0-\n");
     }
     @Test
     public void testParseColunasTres() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt","results.txt");
+        Parser parser = new Parser("src/test/fixtures/testFixtureParsingDois.txt");
         parser.setDelimitador("-");
         assertEquals(parser.getParsedResultColumns(), "1-2-\n1000.0-523.0-\n782.0-861.0-\n");
     }

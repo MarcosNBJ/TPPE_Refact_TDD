@@ -5,12 +5,17 @@
  */
 package TPPE_TDD;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,13 +24,11 @@ import java.util.List;
 public class Parser {
 
    private String arquivoEntrada;
-   private String arquivoSaida;
    private String delimitador;
    private Integer max;
 
-    public Parser(String arquivoEntrada, String arquivoSaida) {
+    public Parser(String arquivoEntrada) {
         this.arquivoEntrada = arquivoEntrada;
-        this.arquivoSaida = arquivoSaida;
     }
 
     public List<String> readInput() throws ArquivoNaoEncontradoException {
@@ -124,5 +127,20 @@ public class Parser {
     
     }
 
-   
+    public void writeResults(int mode, String caminhoSaida) throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
+        
+        String result = 1==mode?getParsedResultLines():getParsedResultColumns();
+        String arquivoSaida = caminhoSaida+"/";
+        arquivoSaida += "analysisTime.out".equals(this.arquivoEntrada) ? "analysisTimeTab.out" : "analysisMemoryTab.out";
+
+        
+        try (PrintWriter out = new PrintWriter(arquivoSaida)) {
+            out.println(result);
+        } catch (Exception ex) {
+           throw new EscritaNaoPermitidaException();
+        }
+    
+    }
+    
+
 }
