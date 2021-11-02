@@ -126,21 +126,24 @@ public class Parser {
         return result;
     
     }
-
-    public void writeResults(int mode, String caminhoSaida) throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
-        
-        String result = 1==mode?getParsedResultLines():getParsedResultColumns();
-        String arquivoSaida = caminhoSaida+"/";
-        arquivoSaida += "analysisTime.out".equals(this.arquivoEntrada) ? "analysisTimeTab.out" : "analysisMemoryTab.out";
-
-        
+    
+    
+    private void writeResultsToFile(String content, String arquivoSaida) throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
+                
         try (PrintWriter out = new PrintWriter(arquivoSaida)) {
-            out.println(result);
+            out.println(content);
         } catch (Exception ex) {
            throw new EscritaNaoPermitidaException();
         }
     
     }
     
+    public void selectFormatAndPersist(int mode, String caminhoSaida)throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
+        String result = 1==mode?getParsedResultLines():getParsedResultColumns();
+        String arquivoSaida = caminhoSaida+"/";
+        arquivoSaida += "analysisTime.out".equals(this.arquivoEntrada) ? "analysisTimeTab.out" : "analysisMemoryTab.out";        
+        writeResultsToFile(result,arquivoSaida);
+        
+    }
 
 }
