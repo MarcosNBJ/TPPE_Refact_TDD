@@ -22,25 +22,19 @@ import java.util.logging.Logger;
  * @author marcos
  */
 public class UseParser {
-
-   private String arquivoEntrada;
-   private String delimitador;
-   private Integer max;
+   
+    private String delimitador;
+    private Persistencia persistencia;
+    List<String> input;
 
     public UseParser(String arquivoEntrada) {
-        this.arquivoEntrada = arquivoEntrada;
-    }
-
-    public List<String> readInput() throws ArquivoNaoEncontradoException {
-        
-        List<String> content = new ArrayList<>();
-        
         try {
-            content = Files.readAllLines(Paths.get(this.arquivoEntrada), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-           throw new ArquivoNaoEncontradoException();
+            this.persistencia = new Persistencia(arquivoEntrada);
+            this.input = persistencia.readInput();
+        } catch (ArquivoNaoEncontradoException ex) {
+            Logger.getLogger(UseParser.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return content;
+ 
     }
 
     public void setDelimitador(String delimitador) throws DelimitadorInvalidoException {
@@ -59,34 +53,22 @@ public class UseParser {
     
     public String getParsedResultLines() throws ArquivoNaoEncontradoException{
         ContentParser parser = new ContentParser(this.delimitador);
-        String result = parser.getParsedResultLines(readInput());
+        String result = parser.getParsedResultLines(this.input);
         return result;
     }
     
     public String getParsedResultColumns() throws ArquivoNaoEncontradoException{
         ContentParser parser = new ContentParser(this.delimitador);
-        String result = parser.getParsedResultColumns(readInput());
+        String result = parser.getParsedResultColumns(this.input);
         return result;
     
     }
     
     
-    private void writeResultsToFile(String content, String arquivoSaida) throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
-                
-        try (PrintWriter out = new PrintWriter(arquivoSaida)) {
-            out.println(content);
-        } catch (Exception ex) {
-           throw new EscritaNaoPermitidaException();
-        }
-    
-    }
-    
     public void selectFormatAndPersist(int mode, String caminhoSaida)throws ArquivoNaoEncontradoException, EscritaNaoPermitidaException{
         String result = 1==mode?getParsedResultLines():getParsedResultColumns();
-        String arquivoSaida = caminhoSaida+"/";
-        arquivoSaida += "analysisTime.out".equals(this.arquivoEntrada) ? "analysisTimeTab.out" : "analysisMemoryTab.out";        
-        writeResultsToFile(result,arquivoSaida);
-        
+        this.persistencia.setCaminhoSaida(caminhoSaida);
+        this.persistencia.writeResultsToFile(result);
     }
 
 }
