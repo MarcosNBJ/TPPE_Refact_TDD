@@ -26,8 +26,8 @@ public class Main {
                             "Selecao de entrada",
                             JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options_input, options_input[0]);
        
-       Parser parser;
-       parser = new Parser(options_input[selected_input]);
+       UseParser parser;
+       parser = new UseParser(options_input[selected_input]);
        
        String delimitador = JOptionPane.showInputDialog("Qual delimitador voce gostaria de usar?");
         try {

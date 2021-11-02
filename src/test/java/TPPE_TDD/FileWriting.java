@@ -17,7 +17,7 @@ import org.junit.Test;
 public class FileWriting {
     @Test
     public void testWriteResults() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
-        Parser parser = new Parser("analysisMemory.out");
+        UseParser parser = new UseParser("analysisMemory.out");
         parser.setDelimitador(";");
         parser.selectFormatAndPersist(1,"results");
         File file = new File("results/analysisMemoryTab.out");
@@ -26,7 +26,7 @@ public class FileWriting {
 
     @Test
     public void testWriteResultsDOis() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
-        Parser parser = new Parser("analysisTime.out");
+        UseParser parser = new UseParser("analysisTime.out");
         parser.setDelimitador(";");
         parser.selectFormatAndPersist(1,"results");
         File file = new File("results/analysisTimeTab.out");
@@ -35,7 +35,7 @@ public class FileWriting {
     
     @Test
     public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
-        Parser parser = new Parser("analysisMemory.out");
+        UseParser parser = new UseParser("analysisMemory.out");
         parser.setDelimitador(",");
         parser.selectFormatAndPersist(0,"results");
         File file = new File("results/analysisMemoryTab.out");

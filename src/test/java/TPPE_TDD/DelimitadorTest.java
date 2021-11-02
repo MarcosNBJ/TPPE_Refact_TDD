@@ -17,28 +17,28 @@ public class DelimitadorTest {
     
     @Test
     public void testDelimitador() throws DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixture.txt");
+        UseParser parser = new UseParser("src/test/fixtures/testFixture.txt");
         parser.setDelimitador(";");
         assertEquals(parser.getDelimitador(), ";");
     }
     
     @Test
     public void testDelimitadorDois() throws DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixture.txt");
+        UseParser parser = new UseParser("src/test/fixtures/testFixture.txt");
         parser.setDelimitador("\t");
         assertEquals(parser.getDelimitador(), "\t");
     }    
     
     @Test
     public void testDelimitadorTres() throws DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixture.txt");
+        UseParser parser = new UseParser("src/test/fixtures/testFixture.txt");
         parser.setDelimitador("-");
         assertEquals(parser.getDelimitador(), "-");
     }    
     
     @Test(expected = DelimitadorInvalidoException.class)
     public void testDelimitadorException() throws DelimitadorInvalidoException {
-        Parser parser = new Parser("src/test/fixtures/testFixture.txt");
+        UseParser parser = new UseParser("src/test/fixtures/testFixture.txt");
         parser.setDelimitador("delimitador-invalido");
         assertEquals(parser.getDelimitador(), ";");
     }
