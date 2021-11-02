@@ -48,7 +48,7 @@ public class Main {
         
         String result_directory = JOptionPane.showInputDialog("Em que diretorio deseja salvar os resultados (digite sem a / no final)?");
         try {
-            parser.writeResults(selected_format, result_directory);
+            parser.selectFormatAndPersist(selected_format, result_directory);
         } catch (ArquivoNaoEncontradoException | EscritaNaoPermitidaException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(),"Erro" ,JOptionPane.ERROR_MESSAGE);

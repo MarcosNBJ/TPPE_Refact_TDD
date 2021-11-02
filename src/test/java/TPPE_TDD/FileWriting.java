@@ -19,7 +19,7 @@ public class FileWriting {
     public void testWriteResults() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(";");
-        parser.writeResults(1,"results");
+        parser.selectFormatAndPersist(1,"results");
         File file = new File("results/analysisMemoryTab.out");
         assertTrue(file.exists());
     }
@@ -28,7 +28,7 @@ public class FileWriting {
     public void testWriteResultsDOis() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisTime.out");
         parser.setDelimitador(";");
-        parser.writeResults(1,"results");
+        parser.selectFormatAndPersist(1,"results");
         File file = new File("results/analysisTimeTab.out");
         assertTrue(file.exists());
     }
@@ -37,7 +37,7 @@ public class FileWriting {
     public void testWriteResultsThree() throws ArquivoNaoEncontradoException, DelimitadorInvalidoException, EscritaNaoPermitidaException {
         Parser parser = new Parser("analysisMemory.out");
         parser.setDelimitador(",");
-        parser.writeResults(0,"results");
+        parser.selectFormatAndPersist(0,"results");
         File file = new File("results/analysisMemoryTab.out");
         assertTrue(file.exists());
     }
