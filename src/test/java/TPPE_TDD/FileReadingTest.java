@@ -22,29 +22,29 @@ public class FileReadingTest {
 
     @Test
     public void testLeArquivo() throws ArquivoNaoEncontradoException {
-        UseParser parser = new UseParser("src/test/fixtures/testFixture.txt");
-        List<String> fileContents = parser.readInput();
+        Persistencia persistencia = new Persistencia("src/test/fixtures/testFixture.txt");
+        List<String> fileContents = persistencia.readInput();
         assertEquals(fileContents.get(0), "test file contents");
     }
     
     @Test
     public void testLeArquivoDois() throws ArquivoNaoEncontradoException {
-        UseParser parser = new UseParser("src/test/fixtures/testFixtureDois.txt");
-        List<String> fileContents = parser.readInput();
+        Persistencia persistencia = new Persistencia("src/test/fixtures/testFixtureDois.txt");
+        List<String> fileContents = persistencia.readInput();
         assertEquals(fileContents.get(0), "second test file contents");
     }
     
     @Test
     public void testLeArquivoTres() throws ArquivoNaoEncontradoException {
-        UseParser parser = new UseParser("src/test/fixtures/testFixtureTres.txt");
-        List<String> fileContents = parser.readInput();
+        Persistencia persistencia = new Persistencia("src/test/fixtures/testFixtureTres.txt");
+        List<String> fileContents = persistencia.readInput();
         assertEquals(fileContents.get(0), "third test file contents");
     }
  
     @Test(expected = ArquivoNaoEncontradoException.class)
     public void testLeArquivoException() throws ArquivoNaoEncontradoException {
-        UseParser parser = new UseParser("src/test/fixtures/unexistent.txt");
-        List<String> fileContents = parser.readInput();
+        Persistencia persistencia = new Persistencia("src/test/fixtures/unexistent.txt");
+        List<String> fileContents = persistencia.readInput();
         assertEquals(fileContents.get(0), "");
     }
 }
